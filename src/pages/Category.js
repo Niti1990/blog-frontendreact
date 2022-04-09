@@ -25,23 +25,22 @@ const Category = () => {
             <li key={article.id}>
               <Link to={`/article/${article.attributes.slug}`} className="uk-link-reset uk-card uk-card-default uk-card-hover uk-card-body">
                 <div>
-                  <ul>
-                    {article.attributes.categories.data.map(cat => (
-                      <li key={cat.id}>
-                        {/* <a href={`/category/${cat.attributes.slug}`}> */}
-                        {cat.attributes.name}
-                        {/* </a> */}
-                      </li>
-                    ))}
-                  </ul>
-                  <figure>
-                    <img src={`${STRAPI_HOST}${article.attributes.cover.data.attributes.url}`} alt={article.attributes.cover.data.attributes.alternativeText} />
+                  <div className="uk-flex uk-flex-middle uk-text-meta">
+                    <span>Categories:</span>{' '}
+                    <ul className="uk-list uk-flex">
+                      {article.attributes.categories.data.map(cat => (
+                        <li key={cat.id}>{cat.attributes.name}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* <figure>
+                    <img src={`${article.attributes.cover.data.attributes.url}`} alt={article.attributes.cover.data.attributes.alternativeText} />
                     <figcaption className="uk-text-small">{article.attributes.cover.data.attributes.caption}</figcaption>
-                  </figure>
+                  </figure> */}
                   <h3>{article.attributes.title}</h3>
                 </div>
                 <div>
-                  <p>{article.attributes.body.substring(0, 200)} ...</p>
+                  <p>{article.attributes.description.substring(0, 200)} ...</p>
                 </div>
               </Link>
             </li>
