@@ -19,7 +19,7 @@ const Category = () => {
   return (
     <main className="uk-flex-auto uk-section">
       <article className="uk-container uk-container-small">
-        <h1>Cat.: {data[0].attributes.name}</h1>
+        <h1>Category: {data[0].attributes.name}</h1>
         <ul className="uk-child-width-1-2@m uk-grid-match" data-uk-grid>
           {data[0].attributes.articles.data.map(article => (
             <li key={article.id}>
@@ -34,7 +34,7 @@ const Category = () => {
                     </ul>
                   </div>
                   {/* <figure>
-                    <img src={`${article.attributes.cover.data.attributes.url}`} alt={article.attributes.cover.data.attributes.alternativeText} />
+                    <img src={article.attributes.cover.data.attributes.url} alt={article.attributes.cover.data.attributes.alternativeText} />
                     <figcaption className="uk-text-small">{article.attributes.cover.data.attributes.caption}</figcaption>
                   </figure> */}
                   <h3>{article.attributes.title}</h3>

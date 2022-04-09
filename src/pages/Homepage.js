@@ -37,7 +37,7 @@ const Homepage = () => {
                     </ul>
                   </div>
                   {/* <figure>
-                    <img src={`${article.attributes.cover.data.attributes.url}`} alt={article.attributes.cover.data.attributes.alternativeText} />
+                    <img src={article.attributes.cover.data.attributes.url} alt={article.attributes.cover.data.attributes.alternativeText} />
                     <figcaption className="uk-text-small">{article.attributes.cover.data.attributes.caption}</figcaption>
                   </figure> */}
                   <h3>{article.attributes.title}</h3>

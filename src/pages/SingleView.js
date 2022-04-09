@@ -36,7 +36,7 @@ const SingleView = () => {
             ))}
           </ul>
           {/* <figure>
-            <img src={`${data[0].attributes.cover.data.attributes.url}`} alt={data[0].attributes.cover.data.attributes.alternativeText} />
+            <img src={data[0].attributes.cover.data.attributes.url} alt={data[0].attributes.cover.data.attributes.alternativeText} />
             <figcaption className="uk-text-small">{data[0].attributes.cover.data.attributes.caption}</figcaption>
           </figure> */}
           <h1 className="uk-article-title">{data[0].attributes.title}</h1>
