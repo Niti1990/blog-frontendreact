@@ -1,11 +1,27 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Homepage from './pages/Homepage'
+import SingleView from './pages/SingleView'
+import Category from './pages/Category'
+import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
+import About from './pages/About'
+import Login from './pages/Login'
+import ErrorPage from './pages/ErrorPage'
+
 function App() {
   return (
-    <header className="uk-section uk-section-default uk-flex uk-flex-middle uk-flex-between uk-padding-small">
-      <h1 className="uk-h4 uk-margin-remove-vertical uk-padding">
-        <img src="/ewd-logo.png" alt="logo" />
-        <span>React-Strapi Blog</span>
-      </h1>
-    </header>
+    <Router>
+      <SiteHeader />
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/article/:slug" element={<SingleView />} />
+        <Route path="/category/:slug" element={<Category />} />
+        <Route path="/about/" element={<About />} />
+        <Route path="/login/" element={<Login />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+      <SiteFooter />
+    </Router>
   )
 }
 
