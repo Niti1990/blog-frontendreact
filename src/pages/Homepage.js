@@ -5,20 +5,12 @@ import { Link } from 'react-router-dom'
 const STRAPI_HOST = process.env.REACT_APP_STRAPI_HOST
 const api = '/api/articles'
 const query = '?populate=categories,cover'
-// TODO
-// http://localhost:1337/api/articles?sort=rating:desc&populate=categories,cover
 
-// http://localhost:1337/api/articles?populate=cover
-// http://localhost:1337/api/categories/2?populate[articles][populate][0]=cover
-// http://localhost:1337/api/articles?populate[categories][sort][0]=name%3Aasc&populate[categories][filters][id][$eq]=1
-// http://localhost:1337/api/articles?populate[categories][filters][id][$eq]=1
 const Homepage = () => {
   const { loading, error, data } = useFetch(`${STRAPI_HOST}${api}${query}`)
 
   if (loading) return <p>Loading...</p>
   if (error) return <p>Error </p>
-
-  // console.log(data)
 
   return (
     <main className="uk-flex-auto uk-section">
@@ -36,10 +28,10 @@ const Homepage = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* <figure>
-                    <img src={article.attributes.cover.data.attributes.url} alt={article.attributes.cover.data.attributes.alternativeText} />
-                    <figcaption className="uk-text-small">{article.attributes.cover.data.attributes.caption}</figcaption>
-                  </figure> */}
+                  <figure>
+                    <img src={article.attributes.cover.data[0].attributes.url} alt={article.attributes.cover.data[0].attributes.alternativeText} />
+                    <figcaption className="uk-text-small">{article.attributes.cover.data[0].attributes.caption}</figcaption>
+                  </figure>
                   <h3>{article.attributes.title}</h3>
                 </div>
                 <div>

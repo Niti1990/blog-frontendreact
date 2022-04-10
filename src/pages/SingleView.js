@@ -6,17 +6,7 @@ import ReactMarkdown from 'react-markdown'
 const STRAPI_HOST = process.env.REACT_APP_STRAPI_HOST
 const api = '/api/articles?filters[slug][$eq]='
 const query = '&populate=cover,categories,reviews'
-// slug -> http://localhost:1337/api/articles?filters[slug][$eq]=article-two&populate=cover,categories,reviews
-// http://localhost:1337/api/reviews
-// raw json
-// {
-//     "data": {
-//         "user": "???",
-//         "content": "Second Comment to Article Two",
-//         "rating": 5,
-//         "article": 2
-//     }
-// }
+
 const SingleView = () => {
   const { slug } = useParams()
   const { loading, error, data } = useFetch(`${STRAPI_HOST}${api}${slug}${query}`)
@@ -35,10 +25,10 @@ const SingleView = () => {
               </li>
             ))}
           </ul>
-          {/* <figure>
-            <img src={data[0].attributes.cover.data.attributes.url} alt={data[0].attributes.cover.data.attributes.alternativeText} />
-            <figcaption className="uk-text-small">{data[0].attributes.cover.data.attributes.caption}</figcaption>
-          </figure> */}
+          <figure>
+            <img src={data[0].attributes.cover.data[0].attributes.url} alt={data[0].attributes.cover.data[0].attributes.alternativeText} />
+            <figcaption className="uk-text-small">{data[0].attributes.cover.data[0].attributes.caption}</figcaption>
+          </figure>
           <h1 className="uk-article-title">{data[0].attributes.title}</h1>
         </header>
         <div>

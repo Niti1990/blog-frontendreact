@@ -6,9 +6,7 @@ import useFetch from '../hooks/useFetch'
 const STRAPI_HOST = process.env.REACT_APP_STRAPI_HOST
 const api = '/api/categories?filters[slug][$eq]='
 const query = '&populate[articles][populate]=categories,cover'
-// cat -> http://localhost:1337/api/categories?filters[slug][$eq]=cat-two&populate[articles][populate]=categories,cover
-// slug -> http://localhost:1337/api/categories?filters[slug][$eq]=cat-two&populate[articles][populate][0]=cover
-// id -> http://localhost:1337/api/categories/2?populate[articles][populate][0]=cover
+
 const Category = () => {
   const { slug } = useParams()
   const { loading, error, data } = useFetch(`${STRAPI_HOST}${api}${slug}${query}`)
@@ -33,10 +31,10 @@ const Category = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* <figure>
-                    <img src={article.attributes.cover.data.attributes.url} alt={article.attributes.cover.data.attributes.alternativeText} />
-                    <figcaption className="uk-text-small">{article.attributes.cover.data.attributes.caption}</figcaption>
-                  </figure> */}
+                  <figure>
+                    <img src={article.attributes.cover.data[0].attributes.url} alt={article.attributes.cover.data[0].attributes.alternativeText} />
+                    <figcaption className="uk-text-small">{article.attributes.cover.data[0].attributes.caption}</figcaption>
+                  </figure>
                   <h3>{article.attributes.title}</h3>
                 </div>
                 <div>
