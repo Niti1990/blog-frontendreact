@@ -12,5 +12,11 @@ Deployed on Heroku
 React with UIkit
 Deployed on Netlify
 
+# To start the project
+
+After cloning the repo run npm install to install the dependencies. To run the app in your browser use npm start.
+
+Enjoy our app!
+
 Contribution:
 Nitika,Saritha,Emil
